@@ -9,6 +9,8 @@ import {
 } from "convex/react";
 import { createDocument } from "../../convex/documents";
 import { api } from "../../convex/_generated/api";
+import { Button } from "@/components/ui/button";
+import { ModeToggle } from "@/components/ui/theme-toggle";
 
 export default function Home() {
 	const createDocument = useMutation(api.documents.createDocument);
@@ -20,9 +22,10 @@ export default function Home() {
 			</Unauthenticated>
 			<Authenticated>
 				<UserButton />
-				<button onClick={() => createDocument({ title: "hello world" })}>
+				<ModeToggle />
+				<Button onClick={() => createDocument({ title: "hello world" })}>
 					Click Me
-				</button>
+				</Button>
 				{documents?.map((document) => (
 					<div key={document._id}>{document.title}</div>
 				))}
